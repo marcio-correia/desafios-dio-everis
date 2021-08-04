@@ -1,2 +1,2 @@
-# Repositório do primeiro desafio do Bootcamp da EVERIS
-Desafio de Projeto Git/Github pela plataforma Digital Innovation One
+# Primerio desafio do Bootcamp da EVERIS
+Repositório do projeto sobre Git/Github pela plataforma Digital Innovation One
