@@ -1,27 +1,27 @@
-package one.digitalinnovation;
+package encadeamentosimples;
 
 public class No<T> {
-    private T dado;
-    private No<T> refNo;
+    private T object;
+    private No refNo;
 
     public No() {
     }
 
-    public No(T dado) {
-        this.dado = dado;
+    public No(T object) {
+        this.object = object;
         this.refNo = null;
     }
 
-    public T getDado() {
-        return dado;
+    public T getObject() {
+        return object;
     }
 
     public No getRefNo() {
         return refNo;
     }
 
-    public void setDado(T dado) {
-        this.dado = dado;
+    public void setObject(T object) {
+        this.object = object;
     }
 
     public void setRefNo(No refNo) {
@@ -31,7 +31,7 @@ public class No<T> {
     @Override
     public String toString() {
         return "No{" +
-                "dado='" + dado + '\'' +
+                "dado='" + object + '\'' +
                 '}';
     }
 }

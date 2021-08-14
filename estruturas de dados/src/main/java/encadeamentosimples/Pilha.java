@@ -1,29 +1,30 @@
-package one.digitalinnovation;
+package encadeamentosimples;
 
-public class Pilha {
-    No refTopo;
+public class Pilha <T>{
+    private No<T> refTopo;
 
     public Pilha() {
         this.refTopo = null;
     }
 
-    public void push(No novoNo){
+    public void push(T object){
+        No<T> novoNo =  new No<T>(object);
         novoNo.setRefNo(refTopo);
         refTopo = novoNo;
 
     }
 
-    public No pop (){
+    public T pop (){
         if (!isEmpty()){
             No noRetirado = refTopo;
             refTopo = noRetirado.getRefNo();
-            return noRetirado;
+            return (T) noRetirado.getObject();
         }
         return null;
     }
 
-    public No top(){
-        return refTopo;
+    public T top(){
+        return (T) refTopo.getObject();
     }
 
     public boolean isEmpty(){
@@ -44,13 +45,13 @@ public class Pilha {
 
         while (true){
             if (noAuxiliar != null){
-                stringRetorno += "[No{dado=" + noAuxiliar.getDado() + "}]\n";
+                stringRetorno += noAuxiliar.getObject() +"\n";
                 noAuxiliar = noAuxiliar.getRefNo();
             }else{
                 break;
             }
         }
-        stringRetorno += "===========\n";
+        stringRetorno += "=================\n";
         return stringRetorno;
     }
 }

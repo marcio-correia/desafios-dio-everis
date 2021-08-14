@@ -1,7 +1,7 @@
-package one.digitalinnovation;
+package encadeamentosimples;
 
-public class Fila {
-    private No refFim;
+public class Fila<T> {
+    private No<T> refFim;
 
     public Fila() {
         this.refFim = null;
@@ -11,12 +11,13 @@ public class Fila {
         this.refFim = refFim;
     }
 
-    public void enqueue(No novoNo){
+    public void enqueue(T object){
+        No<T> novoNo = new No(object);
         novoNo.setRefNo(refFim);
         refFim = novoNo;
     }
 
-    public No dequeue(){
+    public T dequeue(){
         if (!isEmpty()){
             No primeiroNo = refFim;
             No noAuxiliar = refFim;
@@ -32,7 +33,20 @@ public class Fila {
                     noAuxiliar = primeiroNo;
                     primeiroNo = primeiroNo.getRefNo();}
             }
-            return primeiroNo;
+            return (T) primeiroNo.getObject();
+        }else{return null;}
+    }
+
+    public T first(){
+        No<T> noAuxiliar = refFim;
+        if (!isEmpty()){
+            while (true){
+                if (noAuxiliar.getRefNo()!=null){
+                    noAuxiliar = noAuxiliar.getRefNo();
+                }else{
+                    return (T) noAuxiliar.getObject();
+                }
+            }
         }else{return null;}
     }
 
@@ -48,8 +62,11 @@ public class Fila {
         No noAuxiliar = refFim;
         while (true){
             if (noAuxiliar!=null) {
-                stringRetorno += "[No{dado=" + noAuxiliar.getDado() + "}]\n";
-            }else{break;}
+                stringRetorno += noAuxiliar.getObject() + "-->";
+            }else{
+                stringRetorno += "null";
+                break;
+            }
             noAuxiliar = noAuxiliar.getRefNo();
         }
         return stringRetorno;
