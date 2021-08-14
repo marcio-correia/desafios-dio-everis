@@ -7,20 +7,20 @@ public class Fila<T> {
         this.refFim = null;
     }
 
-    public Fila(No refFim) {
+    public Fila(No<T> refFim) {
         this.refFim = refFim;
     }
 
     public void enqueue(T object){
-        No<T> novoNo = new No(object);
+        No<T> novoNo = new No<>(object);
         novoNo.setRefNo(refFim);
         refFim = novoNo;
     }
 
     public T dequeue(){
         if (!isEmpty()){
-            No primeiroNo = refFim;
-            No noAuxiliar = refFim;
+            No<T> primeiroNo = refFim;
+            No<T> noAuxiliar = refFim;
             while (true){
                 if (primeiroNo.getRefNo() == null){
                     if (noAuxiliar == refFim){
@@ -33,7 +33,7 @@ public class Fila<T> {
                     noAuxiliar = primeiroNo;
                     primeiroNo = primeiroNo.getRefNo();}
             }
-            return (T) primeiroNo.getObject();
+            return primeiroNo.getObject();
         }else{return null;}
     }
 
@@ -44,14 +44,14 @@ public class Fila<T> {
                 if (noAuxiliar.getRefNo()!=null){
                     noAuxiliar = noAuxiliar.getRefNo();
                 }else{
-                    return (T) noAuxiliar.getObject();
+                    return noAuxiliar.getObject();
                 }
             }
         }else{return null;}
     }
 
     public boolean isEmpty(){
-        return refFim == null ? true:false;
+        return refFim == null;
     }
 
     @Override
@@ -59,7 +59,7 @@ public class Fila<T> {
         String stringRetorno = "------------------\n";
         stringRetorno += "       FILA        \n";
         stringRetorno += "------------------\n";
-        No noAuxiliar = refFim;
+        No<T> noAuxiliar = refFim;
         while (true){
             if (noAuxiliar!=null) {
                 stringRetorno += noAuxiliar.getObject() + "-->";

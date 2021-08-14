@@ -2,7 +2,7 @@ package encadeamentosimples;
 
 public class No<T> {
     private T object;
-    private No refNo;
+    private No<T> refNo;
 
     public No() {
     }
@@ -16,7 +16,7 @@ public class No<T> {
         return object;
     }
 
-    public No getRefNo() {
+    public No<T> getRefNo() {
         return refNo;
     }
 
@@ -24,7 +24,7 @@ public class No<T> {
         this.object = object;
     }
 
-    public void setRefNo(No refNo) {
+    public void setRefNo(No<T> refNo) {
         this.refNo = refNo;
     }
 

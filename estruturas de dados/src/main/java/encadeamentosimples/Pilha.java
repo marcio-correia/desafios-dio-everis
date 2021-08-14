@@ -8,7 +8,7 @@ public class Pilha <T>{
     }
 
     public void push(T object){
-        No<T> novoNo =  new No<T>(object);
+        No<T> novoNo =  new No<>(object);
         novoNo.setRefNo(refTopo);
         refTopo = novoNo;
 
@@ -16,15 +16,15 @@ public class Pilha <T>{
 
     public T pop (){
         if (!isEmpty()){
-            No noRetirado = refTopo;
+            No<T> noRetirado = refTopo;
             refTopo = noRetirado.getRefNo();
-            return (T) noRetirado.getObject();
+            return noRetirado.getObject();
         }
         return null;
     }
 
     public T top(){
-        return (T) refTopo.getObject();
+        return refTopo.getObject();
     }
 
     public boolean isEmpty(){
@@ -32,7 +32,7 @@ public class Pilha <T>{
 //            return true;
 //        }
 //        return false;
-        return refTopo == null? true: false;
+        return refTopo == null;
     }
 
     @Override
@@ -41,7 +41,7 @@ public class Pilha <T>{
         stringRetorno += "      Pilha\n";
         stringRetorno +=  "-----------------\n";
 
-        No noAuxiliar = refTopo;
+        No<T> noAuxiliar = refTopo;
 
         while (true){
             if (noAuxiliar != null){
