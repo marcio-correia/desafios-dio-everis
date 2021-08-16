@@ -10,7 +10,7 @@ public class MainListaDupla {
         System.out.println(minhaLista);
         minhaLista.remove(0);
         System.out.println(minhaLista);
-        minhaLista.add(0,99);
+        minhaLista.add(2,99);
         System.out.println(minhaLista);
         System.out.println(minhaLista.getRefInicio());
         System.out.println(minhaLista.getRefFinal());

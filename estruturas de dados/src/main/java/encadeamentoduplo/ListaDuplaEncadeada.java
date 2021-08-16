@@ -5,10 +5,12 @@ import encadeamentosimples.No;
 public class ListaDuplaEncadeada<T> {
     private NoDuplo<T> refInicio;
     private NoDuplo<T> refFinal;
+    private int tamanhoLista;
 
     public ListaDuplaEncadeada() {
         this.refInicio = null;
         this.refFinal = null;
+        this.tamanhoLista = 0;
     }
 
     public NoDuplo<T> getRefInicio() {
@@ -27,22 +29,31 @@ public class ListaDuplaEncadeada<T> {
         this.refFinal = refFinal;
     }
 
+    public int getTamanhoLista() {
+        return tamanhoLista;
+    }
+
+    public void setTamanhoLista(int tamanhoLista) {
+        this.tamanhoLista = tamanhoLista;
+    }
+
     public boolean isEmpty(){
         return refInicio == null;
     }
 
     public int size(){
-        NoDuplo<T> noAuxiliar = refInicio;
-        int size = 0;
-
-        if (!isEmpty()){
-            size++;
-            while (noAuxiliar.getProximoNo() != null){
-                size++;
-                noAuxiliar = noAuxiliar.getProximoNo();
-            }
-            return size;
-        }else{return size;}
+//        NoDuplo<T> noAuxiliar = refInicio;
+//        int size = 0;
+//
+//        if (!isEmpty()){
+//            size++;
+//            while (noAuxiliar.getProximoNo() != null){
+//                size++;
+//                noAuxiliar = noAuxiliar.getProximoNo();
+//            }
+//            return size;
+//        }else{return size;}
+        return tamanhoLista;
     }
 
     private void validaIndex(int index){
@@ -75,11 +86,11 @@ public class ListaDuplaEncadeada<T> {
         if (!isEmpty()){
             refFinal.setProximoNo(novoNo);
             novoNo.setNoAnterior(refFinal);
-            refFinal = novoNo;
         }else{
             refInicio = novoNo;
-            refFinal = novoNo;
         }
+        refFinal = novoNo;
+        tamanhoLista++;
     }
 
     public void add(int index,T object){
@@ -102,6 +113,7 @@ public class ListaDuplaEncadeada<T> {
                 noPosicao.setNoAnterior(novoNo);
 
             }
+            tamanhoLista++;
         }else{
             add(object);
         }
@@ -126,6 +138,7 @@ public class ListaDuplaEncadeada<T> {
                 refFinal = noRetirado.getNoAnterior();
             }
         }
+        tamanhoLista--;
     }
 
     @Override
